@@ -3,12 +3,13 @@ const str = "dewr";
 for (let i = 0; i < 1000; i++) {
   console.log(i);
 }
-let str = '我是祖国的花朵'；
+let str = '我是祖国的花朵'
 </script>
 
 <template>
   <div class="box">
     <h1>App</h1>
+    <h2>新增标题</h2>
   </div>
 </template>
 

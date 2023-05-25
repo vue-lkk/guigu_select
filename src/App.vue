@@ -1,0 +1,20 @@
+<script setup lang="ts">
+const str = "dewr";
+</script>
+
+<template>
+  <div class="box">
+    <h1>App</h1>
+  </div>
+</template>
+
+<style scoped lang="scss">
+.box {
+  width: 600px;
+  height: 400px;
+  background: rgb(201, 201, 42);
+  h1 {
+    color: #fff;
+  }
+}
+</style>

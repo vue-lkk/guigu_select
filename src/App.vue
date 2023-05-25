@@ -1,9 +1,9 @@
 <script setup lang="ts">
 const str = "dewr";
-for(let i=0;i<1000;i++) 
-{
-  console.log(i)
+for (let i = 0; i < 1000; i++) {
+  console.log(i);
 }
+let str = '我是祖国的花朵'；
 </script>
 
 <template>

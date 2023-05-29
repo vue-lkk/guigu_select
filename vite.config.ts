@@ -1,10 +1,10 @@
 //@ts-nocheck
-import { defineConfig,UserConfigExport, ConfigEnv } from "vite";
+import { defineConfig, UserConfigExport, ConfigEnv } from "vite";
 import vue from "@vitejs/plugin-vue";
 // 引入SVG需要用到的插件
 import { createSvgIconsPlugin } from "vite-plugin-svg-icons";
 import path from "path";
-import { viteMockServe } from 'vite-plugin-mock'
+import { viteMockServe } from "vite-plugin-mock";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ command }) => {
@@ -17,9 +17,9 @@ export default defineConfig(({ command }) => {
         symbolId: "icon-[dir]-[name]",
       }),
       viteMockServe({
-        localEnabled: command === 'serve',
+        localEnabled: command === "serve",
         // mock路径：假接口数据目录
-        mockPath:"./src/mock"
+        mockPath: "./src/mock",
       }),
     ],
     resolve: {
@@ -32,9 +32,9 @@ export default defineConfig(({ command }) => {
       preprocessorOptions: {
         scss: {
           javascriptEnabled: true,
-          additionalData:"@import '@/styles/variable.scss';"
+          additionalData: "@import '@/styles/variable.scss';",
         },
       },
     },
-  }
+  };
 });

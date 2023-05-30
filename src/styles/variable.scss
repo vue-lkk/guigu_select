@@ -1,5 +1,16 @@
 // 设置scss全局变量
 // 主题
-$base-color: rgb(202, 9, 176);
-$base-background:red;
-$font:60px;
+
+// 左侧菜单的宽度
+$base-menu-width:260px;
+
+// 左侧菜单的背景颜色
+$base-menu-background:#241f14;
+
+// 头部导航的宽度
+$base-tabber-height:50px;
+
+// logo
+$base-menu-logo-height:50px;
+
+$base-menu-logo-fontSize:20px

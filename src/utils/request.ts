@@ -9,13 +9,13 @@ let request = axios.create({
 request.interceptors.request.use((config) => {
   // 请求头
   config.headers.token = "123";
-  console.log("请求拦截器", config);
+  // console.log("请求拦截器", config);
   return config;
 });
 //响应拦截器
 request.interceptors.response.use(
   (response) => {
-    console.log("响应拦截器", response);
+    // console.log("响应拦截器", response);
     return response.data;
   },
   (error) => {

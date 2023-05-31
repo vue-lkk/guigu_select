@@ -4,10 +4,12 @@
       <el-col :span="12" :xs="0"></el-col>
       <el-col :span="12" :xs="24">
         <!-- 登录表单 -->
-        <el-form 
-        class="login_form" 
-        :model="loginForm" 
-        :rules="rules" ref="loginForms">
+        <el-form
+          class="login_form"
+          :model="loginForm"
+          :rules="rules"
+          ref="loginForms"
+        >
           <h1>Hello</h1>
           <h2>欢迎使用，硅谷甄选系统</h2>
           <div class="login_form_item">
@@ -50,8 +52,7 @@ import useUserStore from "@/store/userStore.ts";
 import { useRouter } from "vue-router";
 import { ElNotification } from "element-plus";
 // 判断登录时间段
-import {getTime} from '@/utils/getTime.ts'
-
+import { getTime } from "@/utils/getTime.ts";
 
 // 获取用户小仓库
 const userStore = useUserStore();
@@ -73,33 +74,32 @@ const isLoading = ref(false);
 //   ]
 // })
 // 自定义检验规则
-const checkUserName = (rule,value,callback) => {
-  if(value.length >= 5) {
-    callback()
-  }else{
-    return callback(new Error('用户名不能为空'))
+const checkUserName = (rule, value, callback) => {
+  if (value.length >= 5) {
+    callback();
+  } else {
+    return callback(new Error("用户名不能为空"));
   }
-}
-const checkPassWord = (rule,value,callback) => {
-  if(value.length >= 6){
-    callback()
-  }else{
-    callback(new Error('密码长度至少在6位'))
+};
+const checkPassWord = (rule, value, callback) => {
+  if (value.length >= 6) {
+    callback();
+  } else {
+    callback(new Error("密码长度至少在6位"));
   }
-}
+};
 const rules = {
-  username:[{ validator: checkUserName }],
-  password:[{ validator: checkPassWord, trigger: 'blur' }]
-}
+  username: [{ validator: checkUserName }],
+  password: [{ validator: checkPassWord, trigger: "blur" }],
+};
 
-const loginForms = ref()
-
+const loginForms = ref();
 
 // 登录按钮回调
 const login = async () => {
   // 表单校验全部通过，才能发送请求
-  await loginForms.value.validate()
-  
+  await loginForms.value.validate();
+
   //加载效果:开始加载
   isLoading.value = true;
 
@@ -116,7 +116,7 @@ const login = async () => {
     ElNotification({
       type: "success",
       message: "欢迎回来",
-      title:`${getTime()}好!`
+      title: `${getTime()}好!`,
     });
     //登录成功加载效果也消失
     isLoading.value = false;

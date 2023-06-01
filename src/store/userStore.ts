@@ -9,12 +9,16 @@ import { loginForm, loginResponseData } from "@/api/user/type";
 
 import { UserState } from "./type/type";
 
+// 路由表
+import { routes } from "@/router";
+
 //创建用户小仓库
 export default defineStore("User", {
   //小仓库存储数据地方
   state: (): UserState => {
     return {
       token: GET_TOKEN(), //用户唯一标识token
+      routes // 路由表
     };
   },
   //异步|逻辑的地方

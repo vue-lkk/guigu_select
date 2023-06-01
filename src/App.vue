@@ -1,11 +1,10 @@
-<script setup lang="ts">
-</script>
+<script setup lang="ts"></script>
 
 <template>
   <div>
+    <!-- 一级路由 -->
     <router-view></router-view>
   </div>
 </template>
 
-<style scoped lang="scss">
-</style>
+<style scoped lang="scss"></style>

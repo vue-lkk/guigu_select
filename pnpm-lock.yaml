@@ -4,6 +4,9 @@ dependencies:
   '@element-plus/icons':
     specifier: ^0.0.11
     version: registry.npmmirror.com/@element-plus/icons@0.0.11
+  '@element-plus/icons-vue':
+    specifier: ^2.1.0
+    version: registry.npmmirror.com/@element-plus/icons-vue@2.1.0(vue@3.2.47)
   axios:
     specifier: '1.0'
     version: registry.npmmirror.com/axios@1.0.0

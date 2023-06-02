@@ -18,7 +18,7 @@ export default defineStore("User", {
   state: (): UserState => {
     return {
       token: GET_TOKEN(), //用户唯一标识token
-      routes // 路由表
+      routes, // 路由表
     };
   },
   //异步|逻辑的地方

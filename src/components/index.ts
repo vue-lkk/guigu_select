@@ -1,11 +1,10 @@
 import SvgIcon from "./SvgIcon.vue";
 
 // 全局注册图标组件
-import * as ElementPlusIconsVue from '@element-plus/icons-vue'
-console.log(ElementPlusIconsVue)
+import * as ElementPlusIconsVue from "@element-plus/icons-vue";
+console.log(ElementPlusIconsVue);
 
-
-const allGloablComponents = { SvgIcon};
+const allGloablComponents = { SvgIcon };
 
 export default {
   install(app) {
@@ -15,7 +14,7 @@ export default {
     });
     // 注册所有element-plus图标库组件
     for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
-      app.component(key, component)
+      app.component(key, component);
     }
   },
 };

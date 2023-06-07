@@ -1,21 +1,21 @@
 <template>
   <div class="logo">
     <img :src="setting.logo" alt="" v-if="setting.logoHidden" />
-    <p :class={fold:setStore.fold?true:false}>{{ setting.title }}</p>
+    <p :class="{ fold: setStore.fold ? true : false }">{{ setting.title }}</p>
   </div>
 </template>
 
 <script setup lang="ts">
 import setting from "@/settings.js";
 // 切换折叠菜单图标
-import useSettingStore from '@/store/setting.ts'
-const setStore = useSettingStore()
+import useSettingStore from "@/store/setting.ts";
+const setStore = useSettingStore();
 </script>
 
 <script lang="ts">
 export default {
-  name:'Logo'
-}
+  name: "Logo",
+};
 </script>
 
 <style lang="scss">
@@ -25,7 +25,7 @@ export default {
   color: #fff;
   display: flex;
   align-items: center;
-  padding: 10px;
+  padding: 13px;
   img {
     width: 40px;
     height: 40px;
@@ -35,11 +35,13 @@ export default {
     font-size: $base-menu-logo-fontSize;
     margin-left: 10px;
     opacity: 1;
-    transform: scale(1);
-    transition: all 0.3s;
-    &.fold{
+    transform: translateX(0) scale(1);
+    
+    transition: all .8s;
+    &.fold {
       opacity: 0;
-      transform: scale(0);
+      transform: translateX(100px) scale(0);
+      
     }
   }
 }

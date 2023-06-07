@@ -7,9 +7,9 @@ export const routes = [
     component: () => import("@/layout/index.vue"),
     name: "Layout", //命名路由
     meta: {
-      title: "layout", //菜单标题
+      title: "", //菜单标题
       hidden: false, //代表路由标题在菜单中是否隐藏  true:隐藏 false:不隐藏
-      icon: "Connection", //图标组件
+      icon: "", //图标组件
     },
     redirect: "/home", // 重定向
     children: [
@@ -46,6 +46,7 @@ export const routes = [
       hidden: false,
       icon: "Lock",
     },
+    redirect:'/acl/user',
     children: [
       {
         path: "/acl/user",
@@ -89,6 +90,7 @@ export const routes = [
       hidden: false,
       icon: "Goods",
     },
+    redirect:'product/trademark',
     children: [
       {
         path: "/product/trademark",

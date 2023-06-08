@@ -36,12 +36,11 @@ export default {
     margin-left: 10px;
     opacity: 1;
     transform: translateX(0) scale(1);
-    
-    transition: all .8s;
+
+    transition: all 0.8s;
     &.fold {
       opacity: 0;
       transform: translateX(100px) scale(0);
-      
     }
   }
 }

@@ -1,8 +1,8 @@
 import axios from "axios";
 import { ElMessage } from "element-plus";
-import useUserStore from '@/store/userStore.ts'
+import useUserStore from "@/store/userStore.ts";
 // 封装好的本地存储token方法
-import { SET_TOKEN, GET_TOKEN,REMOVE_TOKEN  } from "@/utils/token";
+import { SET_TOKEN, GET_TOKEN, REMOVE_TOKEN } from "@/utils/token";
 
 //创建axios实例
 let request = axios.create({
@@ -12,9 +12,9 @@ let request = axios.create({
 //请求拦截器
 request.interceptors.request.use((config) => {
   // 仓库
-  const userStore  = useUserStore()
+  const userStore = useUserStore();
   // 添加请求头 token
-  if(userStore.token){
+  if (userStore.token) {
     config.headers.token = userStore.token;
   }
   // console.log("请求拦截器", config);

@@ -23,6 +23,6 @@ app.use(store);
 // 安装路由
 app.use(router);
 // 引入路由鉴权文件
-import './permisstion.ts'
+import "./permisstion.ts";
 // 将应用挂载到挂载点上
 app.mount("#app");

@@ -49,7 +49,7 @@
 import { reactive, ref } from "vue";
 import { UserFilled, Lock } from "@element-plus/icons";
 import useUserStore from "@/store/userStore.ts";
-import { useRouter,useRoute } from "vue-router";
+import { useRouter, useRoute } from "vue-router";
 import { ElNotification } from "element-plus";
 // 判断登录时间段
 import { getTime } from "@/utils/getTime.ts";
@@ -60,7 +60,7 @@ const userStore = useUserStore();
 const loginForm = reactive({ username: "admin", password: "atguigu123" });
 //获取路由器
 const $router = useRouter();
-const $route = useRoute()
+const $route = useRoute();
 //定义变量控制按钮加载效果
 const isLoading = ref(false);
 // 表单验证规则
@@ -114,8 +114,8 @@ const login = async () => {
     //编程式导航跳转到展示数据首页
     // 判断登录的时候，路由路径是否有query参数，如果有
     // 就跳转到对应的页面，否则跳转到首页
-    let redirect = $route.query.redirect
-    $router.push({path:redirect || '/'});
+    let redirect = $route.query.redirect;
+    $router.push({ path: redirect || "/" });
     //登录成功提示信息
     ElNotification({
       type: "success",

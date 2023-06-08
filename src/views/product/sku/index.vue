@@ -14,25 +14,26 @@
       <el-table-column prop="address" label="品牌操作" />
     </el-table>
     <!-- 分页器 -->
-    <div class="demo-pagination-block" style="margin-top:10px">
-      <el-pagination 
-      v-model:current-page="currentPage" 
-      v-model:page-size="pageSize" 
-      :page-sizes="[10, 20, 50, 100]"
-      :small="true"
-      :background="true" 
-      layout="sizes, prev, pager, next,->, jumper,total" 
-      :total="400"
-      @size-change="handleSizeChange" 
-      @current-change="handleCurrentChange" />
+    <div class="demo-pagination-block" style="margin-top: 10px">
+      <el-pagination
+        v-model:current-page="currentPage"
+        v-model:page-size="pageSize"
+        :page-sizes="[10, 20, 50, 100]"
+        :small="true"
+        :background="true"
+        layout="sizes, prev, pager, next,->, jumper,total"
+        :total="400"
+        @size-change="handleSizeChange"
+        @current-change="handleCurrentChange"
+      />
     </div>
   </el-card>
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
-const currentPage = ref(2)
-const pageSize = ref(20)
+import { ref } from "vue";
+const currentPage = ref(2);
+const pageSize = ref(20);
 </script>
 
 <style scoped lang="scss"></style>

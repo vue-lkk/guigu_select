@@ -12,7 +12,6 @@
           text-color="#fff"
           :default-active="$route.path"
           :collapse="setStore.fold"
-          
         >
           <Menu :menuList="userStore.routes"></Menu>
         </el-menu>
@@ -44,8 +43,6 @@ const setStore = useSettingStore();
 const $route = useRoute();
 // 获取用户小仓库
 const userStore = useUserStore();
-
-
 </script>
 
 <script lang="ts">
@@ -61,7 +58,7 @@ export default {
   scale: 0;
 }
 .fade-enter-active {
-  transition: all .5s;
+  transition: all 0.5s;
 }
 .fade-enter-to {
   opacity: 1;
@@ -78,7 +75,6 @@ export default {
   opacity: 0;
   scale: 0;
 }
-
 
 .layout_container {
   width: 100%;
@@ -135,7 +131,7 @@ export default {
 }
 
 /*修改折叠过渡时间*/
-.el-menu{
+.el-menu {
   transition: width 0.1s;
   -webkit-transition: width 0.1s;
   -moz-transition: width 0.1s;

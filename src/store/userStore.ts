@@ -1,11 +1,15 @@
 //创建用户相关的小仓库
 import { defineStore } from "pinia";
 //引入接口
-import { reqLogin,reqUserInfo,reqLogout } from "@/api/user/index";
+import { reqLogin, reqUserInfo, reqLogout } from "@/api/user/index";
 // 封装好的本地存储token方法
-import { SET_TOKEN, GET_TOKEN,REMOVE_TOKEN  } from "@/utils/token";
+import { SET_TOKEN, GET_TOKEN, REMOVE_TOKEN } from "@/utils/token";
 // 请求回来的ts类型(mock假数据)
-import { loginForm,loginResponseData,userResponseData } from "@/api/user/type";
+import {
+  loginForm,
+  loginResponseData,
+  userResponseData,
+} from "@/api/user/type";
 
 import { UserState } from "./type/type";
 
@@ -19,8 +23,8 @@ export default defineStore("User", {
     return {
       token: GET_TOKEN(), //用户唯一标识token
       routes, // 路由表
-      username:'', // 用户名
-      avatar:'' //用户头像
+      username: "", // 用户名
+      avatar: "", //用户头像
     };
   },
   //异步|逻辑的地方
@@ -33,9 +37,9 @@ export default defineStore("User", {
       //登录请求:失败201->登录失败错误的信息
       if (result.code == 200) {
         // 本地存储一下token
-        SET_TOKEN(result.data as string)
+        SET_TOKEN(result.data as string);
         // 存储到仓库
-        this.token = result.data as string
+        this.token = result.data as string;
         // 能保证当前async函数返回一个成功的promise
         return "ok";
       } else {
@@ -45,34 +49,33 @@ export default defineStore("User", {
     },
 
     // 获取用户信息
-    async getUserInfo(){
-      const result:userResponseData = await reqUserInfo()
-      if(result.code == 200){
+    async getUserInfo() {
+      const result: userResponseData = await reqUserInfo();
+      if (result.code == 200) {
         // 用户名
-        this.username  = result.data.name
+        this.username = result.data.name;
         // 头像
-        this.avatar  = result.data.avatar
+        this.avatar = result.data.avatar;
         return "ok";
-      }else{
+      } else {
         return Promise.reject(new Error(result.message));
       }
     },
 
     // 退出登录
     async userLogout() {
-      const result:any = await reqLogout()
-      console.log(result)
-      if(result.code == 200){
-        this.token=''
-        this.username=''
-        this.avatar = ''
-        REMOVE_TOKEN()
+      const result: any = await reqLogout();
+      console.log(result);
+      if (result.code == 200) {
+        this.token = "";
+        this.username = "";
+        this.avatar = "";
+        REMOVE_TOKEN();
         return "ok";
-      }else{
+      } else {
         return Promise.reject(new Error(result.message));
       }
-    }
-
+    },
   },
   getters: {},
 });

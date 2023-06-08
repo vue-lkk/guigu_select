@@ -8,7 +8,7 @@ export interface loginForm {
 interface ResponseData {
   code: number;
   message?: string;
-  ok: boolean
+  ok: boolean;
 }
 
 // 定义登录接口返回数据的ts类型
@@ -19,13 +19,16 @@ export interface loginResponseData extends ResponseData {
 // 定义获取用户信息返回数据的ts类型
 export interface userResponseData extends ResponseData {
   data: {
-    routes:string[],
-    buttons:string[],
-    roles:string[],
-    name: string,
-    avatar: string
-  },
+    routes: string[];
+    buttons: string[];
+    roles: string[];
+    name: string;
+    avatar: string;
+  };
 }
+
+
+
 
 // 定义退出接口返回数据的ts类型
 // 因为返回的 data为null 所以不必定义，直接写any即可

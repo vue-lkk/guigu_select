@@ -5,7 +5,6 @@
         <el-button type="primary" icon="Plus">添加品牌</el-button>
       </div>
     </template>
-   
   </el-card>
 </template>
 

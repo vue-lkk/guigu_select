@@ -27,8 +27,5 @@ export interface userResponseData extends ResponseData {
   };
 }
 
-
-
-
 // 定义退出接口返回数据的ts类型
 // 因为返回的 data为null 所以不必定义，直接写any即可

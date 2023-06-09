@@ -25,7 +25,6 @@ export const reqUserInfo = () =>
 // 退出登录接口
 export const reqLogout = () => request.post<any, any>(API.LOGOUT_URL);
 
-
 // 以下是mock模拟登录、用户信息接口
 // // import type 只会从模块中获取类型信息，不会导入模块的实际代码，
 // // 在模块导出大量类型信息的情况下，使用import type 可以带来更好的性能

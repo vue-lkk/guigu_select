@@ -1,3 +1,4 @@
+// -----------------此文件是写商品管理的api---------------
 // 引入封装好的axios
 import request from "@/utils/request";
 // 引入请求品牌data的类型
@@ -8,7 +9,7 @@ enum API {
   TARDEMARK_URL = "/admin/product/baseTrademark", // 品牌管理
   ADD_TARDEMARK_URL = "/admin/product/baseTrademark/save", // 添加品牌
   UPDATE_TARDEMARK_URL = "/admin/product/baseTrademark/update", //修改品牌
-  DELETE_TARDEMARK_URL = '/admin/product/baseTrademark/remove' // 删除品牌
+  DELETE_TARDEMARK_URL = "/admin/product/baseTrademark/remove", // 删除品牌
 }
 
 // 品牌列表
@@ -29,7 +30,6 @@ export const reqAddorUpdateTrademark = (data: TrademarkList) => {
 };
 
 // 删除品牌
-export const reqDeleteTardemark = (id:number|undefined) => {
-  return request.delete<any,any>(API.DELETE_TARDEMARK_URL+ `/${id}`)
-
-}
+export const reqDeleteTardemark = (id: number | undefined) => {
+  return request.delete<any, any>(API.DELETE_TARDEMARK_URL + `/${id}`);
+};

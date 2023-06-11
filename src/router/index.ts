@@ -107,7 +107,7 @@ export const routes = [
         component: () => import("@/views/product/attr/index.vue"),
         name: "Attr",
         meta: {
-          title: "角色管理",
+          title: "属性管理",
           hidden: false,
           icon: "FolderChecked",
         },

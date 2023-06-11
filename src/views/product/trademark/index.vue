@@ -41,13 +41,9 @@
             @cancel="cancelDelete"
           >
             <template #reference>
-              <el-button 
-              type="danger" 
-              icon="Delete" 
-              ></el-button>
+              <el-button type="danger" icon="Delete"></el-button>
             </template>
           </el-popconfirm>
-          
         </template>
       </el-table-column>
     </el-table>
@@ -68,16 +64,24 @@
   </el-card>
 
   <!-- Dailog对话框 -->
-  <el-dialog v-model="dialogFormVisible" :title="trademarkForm.id?'修改品牌':'添加品牌'">
+  <el-dialog
+    v-model="dialogFormVisible"
+    :title="trademarkForm.id ? '修改品牌' : '添加品牌'"
+  >
     <el-form :model="trademarkForm" :rules="rules" ref="ruleFormRef">
-      <el-form-item prop="tmName" label="品牌名称" label-width="100px" style="width: 450px">
+      <el-form-item
+        prop="tmName"
+        label="品牌名称"
+        label-width="100px"
+        style="width: 450px"
+      >
         <el-input
           autocomplete="off"
           placeholder="请输入品牌名称"
           v-model="trademarkForm.tmName"
         />
       </el-form-item>
-      <el-form-item  prop="logoUrl" label="品牌LOGO" label-width="100px">
+      <el-form-item prop="logoUrl" label="品牌LOGO" label-width="100px">
         <el-upload
           class="avatar-uploader"
           action="/api/admin/product/fileUpload"
@@ -103,7 +107,6 @@
       </span>
     </template>
   </el-dialog>
-  
 </template>
 
 <script setup lang="ts">
@@ -111,7 +114,7 @@ import { nextTick, onMounted, reactive, ref } from "vue";
 import {
   reqBaseTrademark,
   reqAddorUpdateTrademark,
-  reqDeleteTardemark
+  reqDeleteTardemark,
 } from "@/api/product/trademark/index";
 // 引入品牌列表ts类型
 import type {
@@ -121,9 +124,9 @@ import type {
   ResponseData,
 } from "@/api/product/trademark/type";
 // element-plus自带的上传图片ts类型
-import { ElMessage } from 'element-plus'
-import type { UploadProps,FormInstance, FormRules } from 'element-plus'
-import { InfoFilled } from '@element-plus/icons-vue'
+import { ElMessage } from "element-plus";
+import type { UploadProps, FormInstance, FormRules } from "element-plus";
+import { InfoFilled } from "@element-plus/icons-vue";
 
 // 当前页
 const currentPage = ref<number>(1);
@@ -142,33 +145,30 @@ const trademarkForm = reactive<TrademarkList>({
 });
 
 // 获取表单组件
-const ruleFormRef = ref<FormInstance>()
-
-
+const ruleFormRef = ref<FormInstance>();
 
 const validatetmName = (rule: any, value: any, callback: any) => {
-  if (value === '') {
-    callback(new Error('品牌名称不能为空'))
-  } else if(value.length <= 2) {
-    callback(new Error('品牌名称不能小于2'))
-  }else{
-    callback()
+  if (value === "") {
+    callback(new Error("品牌名称不能为空"));
+  } else if (value.length <= 2) {
+    callback(new Error("品牌名称不能小于2"));
+  } else {
+    callback();
   }
-  
-}
+};
 const validatelogoUrl = (rule: any, value: any, callback: any) => {
-  if (value === '') {
-    callback(new Error('品牌LOGO未上传'))
-  } else{
-    callback()
+  if (value === "") {
+    callback(new Error("品牌LOGO未上传"));
+  } else {
+    callback();
   }
-}
+};
 
 // 自定义规则
 const rules = reactive<FormRules>({
-  tmName: [{required: true, validator: validatetmName, trigger: 'blur' }],
-  logoUrl: [{ required: true,validator: validatelogoUrl}],
-})
+  tmName: [{ required: true, validator: validatetmName, trigger: "blur" }],
+  logoUrl: [{ required: true, validator: validatelogoUrl }],
+});
 
 onMounted(() => {
   getBaseTrademark();
@@ -198,57 +198,53 @@ const handleSizeChange = () => {
 
 // 添加品牌
 const addTrademark = () => {
-  trademarkForm.id=0
-  trademarkForm.tmName='',
-  trademarkForm.logoUrl=''
+  trademarkForm.id = 0;
+  (trademarkForm.tmName = ""), (trademarkForm.logoUrl = "");
 
   dialogFormVisible.value = true;
   // 清空校验的错误提示信息
   nextTick(() => {
-    ruleFormRef.value.clearValidate('tmName')
-    ruleFormRef.value.clearValidate('logoUrl')
-  })
+    ruleFormRef.value.clearValidate("tmName");
+    ruleFormRef.value.clearValidate("logoUrl");
+  });
 };
 
 // 修改品牌
-const updateTrademark = (row:TrademarkList) => {
+const updateTrademark = (row: TrademarkList) => {
   // 发送请求需要的id
   // trademarkForm.id = row.id
   // trademarkForm.tmName = row.tmName
   // trademarkForm.logoUrl = row.logoUrl
   // 合并
-  Object.assign(trademarkForm,row)
+  Object.assign(trademarkForm, row);
 
   dialogFormVisible.value = true;
-   // 清空校验的错误提示信息
+  // 清空校验的错误提示信息
   nextTick(() => {
-    ruleFormRef.value.clearValidate('tmName')
-    ruleFormRef.value.clearValidate('logoUrl')
-  })
+    ruleFormRef.value.clearValidate("tmName");
+    ruleFormRef.value.clearValidate("logoUrl");
+  });
 };
 
 // 取消删除品牌
-const cancelDelete =() => {
-
-}
+const cancelDelete = () => {};
 
 // 确定删除品牌
-const confirmDelete = async (row:TrademarkList) => {
-  
-  const result = await reqDeleteTardemark(row.id)
-  if(result.code == 200){
+const confirmDelete = async (row: TrademarkList) => {
+  const result = await reqDeleteTardemark(row.id);
+  if (result.code == 200) {
     ElMessage({
       type: "success",
       message: "删除品牌成功",
     });
-  }else{
+  } else {
     ElMessage({
       type: "error",
       message: "删除品牌失败",
     });
   }
   getBaseTrademark();
-}
+};
 
 // 取消添加品牌
 const cancel = () => {
@@ -258,22 +254,22 @@ const cancel = () => {
 // 确定添加品牌、修改品牌
 const confirm = async () => {
   // 发送请求之前校验所以表单项 (返回promise,必须表单验证通过才发送请求)
-  await ruleFormRef.value.validate()
+  await ruleFormRef.value.validate();
   let result: ResponseData = await reqAddorUpdateTrademark(trademarkForm);
   if (result.code == 200) {
     ElMessage({
       type: "success",
-      message: trademarkForm.id?"修改品牌成功":"添加品牌成功",
+      message: trademarkForm.id ? "修改品牌成功" : "添加品牌成功",
     });
     // 再次请求品牌列表数据
-    getBaseTrademark()
+    getBaseTrademark();
   } else {
     ElMessage({
       type: "error",
-      message: trademarkForm.id?"修改品牌失败":"添加品牌失败",
+      message: trademarkForm.id ? "修改品牌失败" : "添加品牌失败",
     });
   }
-  dialogFormVisible.value = false
+  dialogFormVisible.value = false;
 };
 
 // 图片上传之前触发
@@ -293,11 +289,14 @@ const beforeAvatarUpload: UploadProps["beforeUpload"] = (rawFile) => {
 };
 
 // 图片上传成功触发
-const handleAvatarSuccess: UploadProps["onSuccess"] = (response,uploadFile) => {
+const handleAvatarSuccess: UploadProps["onSuccess"] = (
+  response,
+  uploadFile
+) => {
   // trademarkForm.logoUrl = URL.createObjectURL(uploadFile.raw!);
-  trademarkForm.logoUrl = response.data
+  trademarkForm.logoUrl = response.data;
   // 清理某个字段的表单验证信息
-  ruleFormRef.value.clearValidate('logoUrl')
+  ruleFormRef.value.clearValidate("logoUrl");
 };
 </script>
 

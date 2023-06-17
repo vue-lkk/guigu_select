@@ -18,4 +18,3 @@ export interface categoryState {
   c3_list: categoryObj[];
   c3_ID: string | number;
 }
- 

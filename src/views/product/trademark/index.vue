@@ -11,7 +11,12 @@
       </template>
       <!-- table表格 -->
       <el-table :data="records" style="width: 100%" border>
-        <el-table-column type="index" label="序号" width="80px" align="center" />
+        <el-table-column
+          type="index"
+          label="序号"
+          width="80px"
+          align="center"
+        />
         <el-table-column prop="tmName" label="品牌名称" />
         <!-- 表格中利用插槽处理图片展示 -->
         <el-table-column label="品牌LOGO">

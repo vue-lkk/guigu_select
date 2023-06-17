@@ -20,23 +20,23 @@ export interface categoryResponseData extends ResponseData {
 
 // 属性数组(添加、修改)
 export interface attrValueLists {
-  id?: number |string,
-  valueName: string,
-  falg:boolean
-  attrId?: number | string
+  id?: number | string;
+  valueName: string;
+  falg: boolean;
+  attrId?: number | string;
 }
 
-export type attr = attrValueLists[]
+export type attr = attrValueLists[];
 
 // data对象(添加、修改的参数类型)
 export interface attrData {
-  id?: number | string,
-  attrName: string,
-  categoryId: number | string,
-  categoryLevel: number | string,
-  attrValueList:attr
+  id?: number | string;
+  attrName: string;
+  categoryId: number | string;
+  categoryLevel: number | string;
+  attrValueList: attr;
 }
 
-export interface attrResponseData extends ResponseData{
-  data:attrData[]
+export interface attrResponseData extends ResponseData {
+  data: attrData[];
 }

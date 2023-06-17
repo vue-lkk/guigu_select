@@ -1,112 +1,114 @@
 <template>
-  <!-- 卡片 -->
-  <el-card class="box-card">
-    <template #header>
-      <div class="card-header">
-        <el-button type="primary" icon="Plus" @click="addTrademark"
-          >添加品牌</el-button
-        >
-      </div>
-    </template>
-    <!-- table表格 -->
-    <el-table :data="records" style="width: 100%" border>
-      <el-table-column type="index" label="序号" width="80px" align="center" />
-      <el-table-column prop="tmName" label="品牌名称" />
-      <!-- 表格中利用插槽处理图片展示 -->
-      <el-table-column label="品牌LOGO">
-        <template #default="{ row, column, $index }">
-          <div style="display: flex; align-items: center">
-            <img :src="row.logoUrl" style="width: 100px; height: 100px" />
-          </div>
-        </template>
-      </el-table-column>
-      <!-- 表格中利用插槽处理图标展示 -->
-      <el-table-column prop="address" label="品牌操作">
-        <template #="{ row, column, $index }">
-          <!-- 修改品牌 -->
-          <el-button
-            type="warning"
-            icon="Edit"
-            @click="updateTrademark(row)"
-          ></el-button>
-          <!-- 删除品牌 -->
-          <el-popconfirm
-            confirm-button-text="确定"
-            cancel-button-text="取消"
-            :icon="InfoFilled"
-            icon-color="#ff0039"
-            title="是否删除品牌?"
-            width="200px"
-            @confirm="confirmDelete(row)"
-            @cancel="cancelDelete"
+  <div>
+    <!-- 卡片 -->
+    <el-card class="box-card">
+      <template #header>
+        <div class="card-header">
+          <el-button type="primary" icon="Plus" @click="addTrademark"
+            >添加品牌</el-button
           >
-            <template #reference>
-              <el-button type="danger" icon="Delete"></el-button>
-            </template>
-          </el-popconfirm>
-        </template>
-      </el-table-column>
-    </el-table>
-    <!-- 分页器 -->
-    <div class="demo-pagination-block" style="margin-top: 10px">
-      <el-pagination
-        v-model:current-page="currentPage"
-        v-model:page-size="pageSize"
-        :page-sizes="[5, 10, 20, 50]"
-        :small="true"
-        :background="true"
-        layout="prev, pager, next,jumper,->, sizes,total"
-        :total="total"
-        @size-change="handleSizeChange"
-        @current-change="handleCurrentChange"
-      />
-    </div>
-  </el-card>
-
-  <!-- Dailog对话框 -->
-  <el-dialog
-    v-model="dialogFormVisible"
-    :title="trademarkForm.id ? '修改品牌' : '添加品牌'"
-  >
-    <el-form :model="trademarkForm" :rules="rules" ref="ruleFormRef">
-      <el-form-item
-        prop="tmName"
-        label="品牌名称"
-        label-width="100px"
-        style="width: 450px"
-      >
-        <el-input
-          autocomplete="off"
-          placeholder="请输入品牌名称"
-          v-model="trademarkForm.tmName"
+        </div>
+      </template>
+      <!-- table表格 -->
+      <el-table :data="records" style="width: 100%" border>
+        <el-table-column type="index" label="序号" width="80px" align="center" />
+        <el-table-column prop="tmName" label="品牌名称" />
+        <!-- 表格中利用插槽处理图片展示 -->
+        <el-table-column label="品牌LOGO">
+          <template #default="{ row, column, $index }">
+            <div style="display: flex; align-items: center">
+              <img :src="row.logoUrl" style="width: 100px; height: 100px" />
+            </div>
+          </template>
+        </el-table-column>
+        <!-- 表格中利用插槽处理图标展示 -->
+        <el-table-column prop="address" label="品牌操作">
+          <template #="{ row, column, $index }">
+            <!-- 修改品牌 -->
+            <el-button
+              type="warning"
+              icon="Edit"
+              @click="updateTrademark(row)"
+            ></el-button>
+            <!-- 删除品牌 -->
+            <el-popconfirm
+              confirm-button-text="确定"
+              cancel-button-text="取消"
+              :icon="InfoFilled"
+              icon-color="#ff0039"
+              title="是否删除品牌?"
+              width="200px"
+              @confirm="confirmDelete(row)"
+              @cancel="cancelDelete"
+            >
+              <template #reference>
+                <el-button type="danger" icon="Delete"></el-button>
+              </template>
+            </el-popconfirm>
+          </template>
+        </el-table-column>
+      </el-table>
+      <!-- 分页器 -->
+      <div class="demo-pagination-block" style="margin-top: 10px">
+        <el-pagination
+          v-model:current-page="currentPage"
+          v-model:page-size="pageSize"
+          :page-sizes="[5, 10, 20, 50]"
+          :small="true"
+          :background="true"
+          layout="prev, pager, next,jumper,->, sizes,total"
+          :total="total"
+          @size-change="handleSizeChange"
+          @current-change="handleCurrentChange"
         />
-      </el-form-item>
-      <el-form-item prop="logoUrl" label="品牌LOGO" label-width="100px">
-        <el-upload
-          class="avatar-uploader"
-          action="/api/admin/product/fileUpload"
-          :show-file-list="false"
-          :on-success="handleAvatarSuccess"
-          :before-upload="beforeAvatarUpload"
+      </div>
+    </el-card>
+
+    <!-- Dailog对话框 -->
+    <el-dialog
+      v-model="dialogFormVisible"
+      :title="trademarkForm.id ? '修改品牌' : '添加品牌'"
+    >
+      <el-form :model="trademarkForm" :rules="rules" ref="ruleFormRef">
+        <el-form-item
+          prop="tmName"
+          label="品牌名称"
+          label-width="100px"
+          style="width: 450px"
         >
-          <img
-            v-if="trademarkForm.logoUrl"
-            :src="trademarkForm.logoUrl"
-            class="avatar"
+          <el-input
+            autocomplete="off"
+            placeholder="请输入品牌名称"
+            v-model="trademarkForm.tmName"
           />
-          <el-icon v-else class="avatar-uploader-icon">
-            <Plus />
-          </el-icon>
-        </el-upload>
-      </el-form-item>
-    </el-form>
-    <template #footer>
-      <span class="dialog-footer">
-        <el-button @click="cancel">取消</el-button>
-        <el-button type="primary" @click="confirm"> 确定 </el-button>
-      </span>
-    </template>
-  </el-dialog>
+        </el-form-item>
+        <el-form-item prop="logoUrl" label="品牌LOGO" label-width="100px">
+          <el-upload
+            class="avatar-uploader"
+            action="/api/admin/product/fileUpload"
+            :show-file-list="false"
+            :on-success="handleAvatarSuccess"
+            :before-upload="beforeAvatarUpload"
+          >
+            <img
+              v-if="trademarkForm.logoUrl"
+              :src="trademarkForm.logoUrl"
+              class="avatar"
+            />
+            <el-icon v-else class="avatar-uploader-icon">
+              <Plus />
+            </el-icon>
+          </el-upload>
+        </el-form-item>
+      </el-form>
+      <template #footer>
+        <span class="dialog-footer">
+          <el-button @click="cancel">取消</el-button>
+          <el-button type="primary" @click="confirm"> 确定 </el-button>
+        </span>
+      </template>
+    </el-dialog>
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -189,7 +191,7 @@ const handleCurrentChange = () => {
   getBaseTrademark();
 };
 
-// 多少条改变就会触发事件
+// 一页多少条数改变就会触发事件
 const handleSizeChange = () => {
   // 需要将当前页改为1比较好，可能页数没有怎么多了
   currentPage.value = 1;

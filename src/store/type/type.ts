@@ -1,5 +1,5 @@
 import { RouteRecordRaw } from "vue-router";
-import {categoryObj} from '@/api/product/attr/type'
+import { categoryObj } from "@/api/product/attr/type";
 
 // 定义用户信息小仓库ts类型
 export interface UserState {
@@ -11,6 +11,11 @@ export interface UserState {
 
 // 定义分类小仓库ts类型
 export interface categoryState {
-  c1_list:categoryObj[],
-  c1_ID:string | number
+  c1_list: categoryObj[];
+  c1_ID: string | number;
+  c2_list: categoryObj[];
+  c2_ID: string | number;
+  c3_list: categoryObj[];
+  c3_ID: string | number;
 }
+ 

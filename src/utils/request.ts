@@ -2,15 +2,16 @@ import axios from "axios";
 import { ElMessage } from "element-plus";
 import useUserStore from "@/store/userStore.ts";
 // 封装好的本地存储token方法
-import { SET_TOKEN, GET_TOKEN, REMOVE_TOKEN } from "@/utils/token";
+// import { SET_TOKEN, GET_TOKEN, REMOVE_TOKEN } from "@/utils/token";
 
 //创建axios实例
 let request = axios.create({
   baseURL: import.meta.env.VITE_APP_BASE_API,
   timeout: 5000,
 });
+
 //请求拦截器
-request.interceptors.request.use((config) => {
+request.interceptors.request.use((config: any) => {
   // 仓库
   const userStore = useUserStore();
   // 添加请求头 token
@@ -20,6 +21,7 @@ request.interceptors.request.use((config) => {
   // console.log("请求拦截器", config);
   return config;
 });
+
 //响应拦截器
 request.interceptors.response.use(
   (response) => {

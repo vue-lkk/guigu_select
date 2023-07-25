@@ -1,6 +1,6 @@
 // -----------------此文件是写商品管理的相关数据的ts类型---------------
 // 定义全部接口返回共同数据的ts类型
-interface ResponseData {
+export interface ResponseData {
   code: number;
   message?: string;
   ok: boolean;

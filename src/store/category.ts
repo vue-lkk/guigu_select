@@ -4,7 +4,7 @@ import {
   reqCategory_3,
 } from "@/api/product/atrr";
 import { defineStore } from "pinia";
-import type { categoryResponseData } from "@/api/product/attr/type";
+import type { categoryResponseData } from "@/api/product/atrr/type";
 import type { categoryState } from "@/store/type/type";
 
 export default defineStore("category", {

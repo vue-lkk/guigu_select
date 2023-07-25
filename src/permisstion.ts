@@ -13,6 +13,7 @@ import setting from "@/settings.ts";
 
 // 全局前置导航
 router.beforeEach(async (to, form, next) => {
+  console.log(form);
   // 修改标题
   document.title = setting.title + to.meta.title;
   nprogress.start();
@@ -32,7 +33,8 @@ router.beforeEach(async (to, form, next) => {
         // 如果没有用户信息，在守卫这里发送请求获取到用户信息再放行
         try {
           await userStore.getUserInfo();
-          next();
+          //万一:刷新的时候是异步路由,有可能获取到用户信息、异步路由还没有加载完毕,出现空白的效果
+          next({ ...to });
         } catch (error: any) {
           // 1.token过期：获取不到用户信息
           // 2.用户手动修改本地token
@@ -54,6 +56,6 @@ router.beforeEach(async (to, form, next) => {
 });
 
 // 全局后置导航
-router.afterEach((to, form) => {
+router.afterEach(() => {
   nprogress.done();
 });

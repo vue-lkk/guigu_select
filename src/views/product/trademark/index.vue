@@ -4,7 +4,11 @@
     <el-card class="box-card">
       <template #header>
         <div class="card-header">
-          <el-button type="primary" icon="Plus" @click="addTrademark"
+          <el-button
+            type="primary"
+            icon="Plus"
+            @click="addTrademark"
+            v-has="`btn.Trademark.add`"
             >添加品牌</el-button
           >
         </div>
@@ -20,7 +24,7 @@
         <el-table-column prop="tmName" label="品牌名称" />
         <!-- 表格中利用插槽处理图片展示 -->
         <el-table-column label="品牌LOGO">
-          <template #default="{ row, column, $index }">
+          <template #default="{ row }">
             <div style="display: flex; align-items: center">
               <img :src="row.logoUrl" style="width: 100px; height: 100px" />
             </div>
@@ -28,12 +32,13 @@
         </el-table-column>
         <!-- 表格中利用插槽处理图标展示 -->
         <el-table-column prop="address" label="品牌操作">
-          <template #="{ row, column, $index }">
+          <template #="{ row }">
             <!-- 修改品牌 -->
             <el-button
               type="warning"
               icon="Edit"
               @click="updateTrademark(row)"
+              v-has="`btn.Trademark.update`"
             ></el-button>
             <!-- 删除品牌 -->
             <el-popconfirm
@@ -47,7 +52,11 @@
               @cancel="cancelDelete"
             >
               <template #reference>
-                <el-button type="danger" icon="Delete"></el-button>
+                <el-button
+                  type="danger"
+                  icon="Delete"
+                  v-has="`btn.Trademark.remove`"
+                ></el-button>
               </template>
             </el-popconfirm>
           </template>
@@ -132,7 +141,7 @@ import type {
 } from "@/api/product/trademark/type";
 // element-plus自带的上传图片ts类型
 import { ElMessage } from "element-plus";
-import type { UploadProps, FormInstance, FormRules } from "element-plus";
+import type { UploadProps, FormRules } from "element-plus";
 import { InfoFilled } from "@element-plus/icons-vue";
 
 // 当前页
@@ -152,9 +161,10 @@ const trademarkForm = reactive<TrademarkList>({
 });
 
 // 获取表单组件
-const ruleFormRef = ref<FormInstance>();
+const ruleFormRef = ref<any>();
 
 const validatetmName = (rule: any, value: any, callback: any) => {
+  console.log(rule);
   if (value === "") {
     callback(new Error("品牌名称不能为空"));
   } else if (value.length <= 2) {
@@ -164,6 +174,7 @@ const validatetmName = (rule: any, value: any, callback: any) => {
   }
 };
 const validatelogoUrl = (rule: any, value: any, callback: any) => {
+  console.log(rule);
   if (value === "") {
     callback(new Error("品牌LOGO未上传"));
   } else {
@@ -296,10 +307,7 @@ const beforeAvatarUpload: UploadProps["beforeUpload"] = (rawFile) => {
 };
 
 // 图片上传成功触发
-const handleAvatarSuccess: UploadProps["onSuccess"] = (
-  response,
-  uploadFile
-) => {
+const handleAvatarSuccess: UploadProps["onSuccess"] = (response) => {
   // trademarkForm.logoUrl = URL.createObjectURL(uploadFile.raw!);
   trademarkForm.logoUrl = response.data;
   // 清理某个字段的表单验证信息

@@ -7,7 +7,7 @@ import Category from "@/components/category.vue";
 import * as ElementPlusIconsVue from "@element-plus/icons-vue";
 
 // 收集自己定义的组件
-const allGloablComponents = { SvgIcon, Category };
+const allGloablComponents: any = { SvgIcon, Category };
 
 export default {
   install(app: any) {

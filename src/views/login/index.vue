@@ -45,7 +45,7 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { reactive, ref } from "vue";
 import { UserFilled, Lock } from "@element-plus/icons";
 import useUserStore from "@/store/userStore.ts";
@@ -62,7 +62,7 @@ const loginForm = reactive({ username: "admin", password: "atguigu123" });
 const $router = useRouter();
 const $route = useRoute();
 //定义变量控制按钮加载效果
-const isLoading = ref(false);
+const isLoading = ref<boolean>(false);
 // 表单验证规则
 // const rules = reactive({
 //   username:[
@@ -75,14 +75,16 @@ const isLoading = ref(false);
 //   ]
 // })
 // 自定义检验规则
-const checkUserName = (rule, value, callback) => {
+const checkUserName = (rule: any, value: any, callback: any) => {
+  console.log(rule);
   if (value.length >= 5) {
     callback();
   } else {
     return callback(new Error("用户名不能为空"));
   }
 };
-const checkPassWord = (rule, value, callback) => {
+const checkPassWord = (rule: any, value: any, callback: any) => {
+  console.log(rule);
   if (value.length >= 6) {
     callback();
   } else {
@@ -114,7 +116,7 @@ const login = async () => {
     //编程式导航跳转到展示数据首页
     // 判断登录的时候，路由路径是否有query参数，如果有
     // 就跳转到对应的页面，否则跳转到首页
-    let redirect = $route.query.redirect;
+    let redirect = $route.query.redirect as string;
     $router.push({ path: redirect || "/" });
     //登录成功提示信息
     ElNotification({
@@ -124,7 +126,7 @@ const login = async () => {
     });
     //登录成功加载效果也消失
     isLoading.value = false;
-  } catch (error) {
+  } catch (error: any) {
     //登录失败加载效果消息
     isLoading.value = false;
     //登录失败的提示信息

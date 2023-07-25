@@ -12,6 +12,10 @@ import "@/styles/index.scss";
 import axios from "axios";
 import router from "@/router";
 import store from "./store/index";
+// 暗黑模式需要的样式
+import "element-plus/theme-chalk/dark/css-vars.css";
+// 引入自定义指令
+import { isHasButton } from "@/directive/has.ts";
 
 const app = createApp(App);
 // 安装element-plus插件
@@ -22,6 +26,8 @@ app.use(gloalComponent);
 app.use(store);
 // 安装路由
 app.use(router);
+// 全局注册自定义指令
+isHasButton(app);
 // 引入路由鉴权文件
 import "./permisstion.ts";
 // 将应用挂载到挂载点上

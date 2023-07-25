@@ -35,6 +35,7 @@ export interface attrData {
   categoryId: number | string;
   categoryLevel: number | string;
   attrValueList: attr;
+  attrIdAndValueId?: number | string;
 }
 
 export interface attrResponseData extends ResponseData {

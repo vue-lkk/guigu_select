@@ -51,42 +51,46 @@ export interface AllTradeMark extends Data {
 
 // 商品图片ts类型
 export interface SpuImage {
-  id?: number;
+  id?: number | string;
   createTime?: string;
   updateTime?: string;
   spuId?: number;
   imgName?: string;
   imgUrl?: string;
-  name: string;
-  url: string;
+  name?: string;
+  url?: string;
 }
+export type spuImage = SpuImage[];
 //已有的SPU的照片墙数据的类型
 export interface SpuHasImg extends Data {
-  data: SpuImage[];
+  data: spuImage;
 }
 
 //已有的销售属性值对象ts类型
 export interface SaleAttrValue {
-  id?: number;
+  id?: number | string;
   createTime?: null;
   updateTime?: null;
   spuId?: number;
+  isChecked?: null;
   baseSaleAttrId: number;
   saleAttrValueName: string;
   saleAttrName: string;
-  isChecked?: null;
+  flag?: boolean;
+  attrValue?: string;
 }
 //存储已有的销售属性值数组类型
 export type SpuSaleAttrValueList = SaleAttrValue[];
 //销售属性对象ts类型
 export interface SaleAttr {
-  id?: number;
+  id?: number | string;
   createTime?: null;
   updateTime?: null;
   spuId?: string;
-  baseSaleAttrId: number;
+  baseSaleAttrId: number | string;
   saleAttrName: string;
   spuSaleAttrValueList: SpuSaleAttrValueList;
+  saleAttrIdAndValueId: string;
 }
 //SPU已有的销售属性接口返回数据ts类型
 export interface SaleAttrResponseData extends Data {
@@ -100,4 +104,50 @@ export interface HasSaleAttr {
 }
 export interface HasSaleAttrResponseData extends Data {
   data: HasSaleAttr[];
+}
+
+// 平台属性
+export interface SkuAttrValueList {
+  attrId: number | string; //平台属性的ID
+  valueId: number | string; //属性值的ID
+}
+// 销售属性
+export interface SkuSaleAttrValueList {
+  saleAttrId: number | string; //属性
+  saleAttrValueId: number | string; //属性值的ID
+}
+// 收集添加sku数据的ts类型
+export interface SkuData {
+  category3Id: number | string; //三级分类的ID
+  spuId: number | string; //已有的spu的ID
+  tmId: number | string; //SPU品牌的ID
+  skuName: string; // SKU名字
+  price: number | string; // sku价格、
+  weight: number | string; // sku重量
+  skuDesc: string; // sku描述
+  skuAttrValueList?: SkuAttrValueList[]; //平台属性的收集
+  skuSaleAttrValueList?: SkuSaleAttrValueList[]; // 销售属性
+  skuDefaultImg: string; // SKU图片地址
+}
+
+// 接口返回某个商品sku列表数据的ts类型
+export interface skuItem {
+  id: number | string;
+  spuId: number | string;
+  price: number;
+  skuName: string;
+  skuDesc: string;
+  weight: number;
+  tmId: number | string;
+  category3Id: number | string;
+  skuDefaultImg: string;
+  isSale: number;
+  skuImageList: null;
+  skuAttrValueList: null;
+  skuSaleAttrValueList: null;
+}
+
+// 接口数据data
+export interface SkuAttr extends Data {
+  data: skuItem[];
 }

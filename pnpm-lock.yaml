@@ -10,9 +10,21 @@ dependencies:
   axios:
     specifier: '1.0'
     version: registry.npmmirror.com/axios@1.0.0
+  echarts:
+    specifier: ^5.4.3
+    version: registry.npmmirror.com/echarts@5.4.3
+  echarts-liquidfill:
+    specifier: ^3.1.0
+    version: registry.npmmirror.com/echarts-liquidfill@3.1.0(echarts@5.4.3)
   element-plus:
     specifier: ^2.3.5
     version: registry.npmmirror.com/element-plus@2.3.5(vue@3.2.47)
+  lodash:
+    specifier: ^4.17.21
+    version: registry.npmmirror.com/lodash@4.17.21
+  moment:
+    specifier: ^2.29.4
+    version: registry.npmmirror.com/moment@2.29.4
   nprogress:
     specifier: ^0.2.0
     version: registry.npmmirror.com/nprogress@0.2.0
@@ -22,6 +34,9 @@ dependencies:
   vue:
     specifier: ^3.2.47
     version: registry.npmmirror.com/vue@3.2.47
+  vue-moment:
+    specifier: ^4.1.0
+    version: registry.npmmirror.com/vue-moment@4.1.0(vue@3.2.47)
   vue-router:
     specifier: ^4.2.1
     version: registry.npmmirror.com/vue-router@4.2.1(vue@3.2.47)
@@ -36,6 +51,9 @@ devDependencies:
   '@commitlint/config-conventional':
     specifier: ^17.6.3
     version: registry.npmmirror.com/@commitlint/config-conventional@17.6.3
+  '@types/nprogress':
+    specifier: ^0.2.0
+    version: registry.npmmirror.com/@types/nprogress@0.2.0
   '@typescript-eslint/eslint-plugin':
     specifier: ^5.43.0
     version: registry.npmmirror.com/@typescript-eslint/eslint-plugin@5.59.7(@typescript-eslint/parser@5.59.7)(eslint@8.41.0)(typescript@5.0.2)
@@ -1216,6 +1234,12 @@ packages:
     resolution: {integrity: sha512-Gj7cI7z+98M282Tqmp2K5EIsoouUEzbBJhQQzDE3jSIRk6r9gsz0oUokqIUR4u1R3dMHo0pDHM7sNOHyhulypw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@types/normalize-package-data/-/normalize-package-data-2.4.1.tgz}
     name: '@types/normalize-package-data'
     version: 2.4.1
+    dev: true
+
+  registry.npmmirror.com/@types/nprogress@0.2.0:
+    resolution: {integrity: sha512-1cYJrqq9GezNFPsWTZpFut/d4CjpZqA0vhqDUPFWYKF1oIyBz5qnoYMzR+0C/T96t3ebLAC1SSnwrVOm5/j74A==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@types/nprogress/-/nprogress-0.2.0.tgz}
+    name: '@types/nprogress'
+    version: 0.2.0
     dev: true
 
   registry.npmmirror.com/@types/semver@7.5.0:
@@ -2931,6 +2955,26 @@ packages:
     dependencies:
       is-obj: registry.npmmirror.com/is-obj@2.0.0
     dev: true
+
+  registry.npmmirror.com/echarts-liquidfill@3.1.0(echarts@5.4.3):
+    resolution: {integrity: sha512-5Dlqs/jTsdTUAsd+K5LPLLTgrbbNORUSBQyk8PSy1Mg2zgHDWm83FmvA4s0ooNepCJojFYRITTQ4GU1UUSKYLw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/echarts-liquidfill/-/echarts-liquidfill-3.1.0.tgz}
+    id: registry.npmmirror.com/echarts-liquidfill/3.1.0
+    name: echarts-liquidfill
+    version: 3.1.0
+    peerDependencies:
+      echarts: ^5.0.1
+    dependencies:
+      echarts: registry.npmmirror.com/echarts@5.4.3
+    dev: false
+
+  registry.npmmirror.com/echarts@5.4.3:
+    resolution: {integrity: sha512-mYKxLxhzy6zyTi/FaEbJMOZU1ULGEQHaeIeuMR5L+JnJTpz+YR03mnnpBhbR4+UYJAgiXgpyTVLffPAjOTLkZA==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/echarts/-/echarts-5.4.3.tgz}
+    name: echarts
+    version: 5.4.3
+    dependencies:
+      tslib: registry.npmmirror.com/tslib@2.3.0
+      zrender: registry.npmmirror.com/zrender@5.4.4
+    dev: false
 
   registry.npmmirror.com/ee-first@1.1.1:
     resolution: {integrity: sha512-WMwm9LhRUo+WUaRN+vRuETqG89IgZphVSNkdFgeb6sS/E4OrDIN7t48CAewSHXc6C8lefD8KKfr5vY61brQlow==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/ee-first/-/ee-first-1.1.1.tgz}
@@ -5304,6 +5348,12 @@ packages:
       commander: registry.npmmirror.com/commander@7.2.0
     dev: true
 
+  registry.npmmirror.com/moment@2.29.4:
+    resolution: {integrity: sha512-5LC9SOxjSc2HF6vO2CyuTDNivEdoz2IvyJJGj6X8DJ0eFyfszE0QiEd+iXmBvUP3WHxSjFH/vIsA0EN00cgr8w==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/moment/-/moment-2.29.4.tgz}
+    name: moment
+    version: 2.29.4
+    dev: false
+
   registry.npmmirror.com/ms@2.0.0:
     resolution: {integrity: sha512-Tpp60P6IUJDTuOq/5Z8cdskzJujfwqfOTkrwIwj7IRISpnkJnT6SyJ4PCPnGMoFjC9ddhal5KVIYtAt97ix05A==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/ms/-/ms-2.0.0.tgz}
     name: ms
@@ -7138,6 +7188,12 @@ packages:
     version: 1.14.1
     dev: true
 
+  registry.npmmirror.com/tslib@2.3.0:
+    resolution: {integrity: sha512-N82ooyxVNm6h1riLCoyS9e3fuJ3AMG2zIZs2Gd1ATcSFjSA23Q0fzjjZeh0jbJvWVDZ0cJT8yaNNaaXHzueNjg==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/tslib/-/tslib-2.3.0.tgz}
+    name: tslib
+    version: 2.3.0
+    dev: false
+
   registry.npmmirror.com/tsutils@3.21.0(typescript@5.0.2):
     resolution: {integrity: sha512-mHKK3iUXL+3UF6xL5k0PEhKRUBKPBCv/+RkEOpjRWxxx27KKRBmmA60A9pgOUvMi8GKhRMPEmjBRPzs2W7O1OA==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/tsutils/-/tsutils-3.21.0.tgz}
     id: registry.npmmirror.com/tsutils/3.21.0
@@ -7451,6 +7507,18 @@ packages:
       - supports-color
     dev: true
 
+  registry.npmmirror.com/vue-moment@4.1.0(vue@3.2.47):
+    resolution: {integrity: sha512-Gzisqpg82ItlrUyiD9d0Kfru+JorW2o4mQOH06lEDZNgxci0tv/fua1Hl0bo4DozDV2JK1r52Atn/8QVCu8qQw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/vue-moment/-/vue-moment-4.1.0.tgz}
+    id: registry.npmmirror.com/vue-moment/4.1.0
+    name: vue-moment
+    version: 4.1.0
+    peerDependencies:
+      vue: '>=1.x.x'
+    dependencies:
+      moment: registry.npmmirror.com/moment@2.29.4
+      vue: registry.npmmirror.com/vue@3.2.47
+    dev: false
+
   registry.npmmirror.com/vue-router@4.2.1(vue@3.2.47):
     resolution: {integrity: sha512-nW28EeifEp8Abc5AfmAShy5ZKGsGzjcnZ3L1yc2DYUo+MqbBClrRP9yda3dIekM4I50/KnEwo1wkBLf7kHH5Cw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/vue-router/-/vue-router-4.2.1.tgz}
     id: registry.npmmirror.com/vue-router/4.2.1
@@ -7705,3 +7773,11 @@ packages:
     version: 0.1.0
     engines: {node: '>=10'}
     dev: true
+
+  registry.npmmirror.com/zrender@5.4.4:
+    resolution: {integrity: sha512-0VxCNJ7AGOMCWeHVyTrGzUgrK4asT4ml9PEkeGirAkKNYXYzoPJCLvmyfdoOXcjTHPs10OZVMfD1Rwg16AZyYw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/zrender/-/zrender-5.4.4.tgz}
+    name: zrender
+    version: 5.4.4
+    dependencies:
+      tslib: registry.npmmirror.com/tslib@2.3.0
+    dev: false

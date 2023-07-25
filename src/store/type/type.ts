@@ -1,5 +1,5 @@
 import { RouteRecordRaw } from "vue-router";
-import { categoryObj } from "@/api/product/attr/type";
+import { categoryObj } from "@/api/product/atrr/type";
 
 // 定义用户信息小仓库ts类型
 export interface UserState {
@@ -7,6 +7,7 @@ export interface UserState {
   routes: RouteRecordRaw[];
   username: string;
   avatar: string;
+  buttons: string[];
 }
 
 // 定义分类小仓库ts类型

@@ -32,7 +32,7 @@
         >
           <el-table-column type="index" prop="date" label="序号" width="180" />
           <el-table-column prop="name" label="属性值名称">
-            <template #="{ row, column, $index }">
+            <template #="{ row, $index }">
               <el-input
                 v-if="row.falg"
                 @blur="attrBlur(row, $index)"
@@ -46,7 +46,7 @@
             </template>
           </el-table-column>
           <el-table-column prop="address" label="属性值操作" width="180">
-            <template #default="{ row, column, $index }">
+            <template #default="{ $index }">
               <el-button
                 type="danger"
                 icon="Delete"
@@ -58,7 +58,7 @@
         <!-- 保存、取消按钮 -->
         <el-button
           type="primary"
-          :disabled="!attrParams.attrValueList.length > 0"
+          :disabled="!attrParams.attrValueList.length"
           @click="save"
           >保存</el-button
         >
@@ -71,6 +71,7 @@
           icon="Plus"
           :disabled="categoryStore.c3_ID ? false : true"
           @click="addAttr"
+          v-has="`btn.Attr.add`"
           >添加平台属性</el-button
         >
 
@@ -78,7 +79,7 @@
           <el-table-column type="index" label="序号" width="60" />
           <el-table-column prop="attrName" label="属性名称" width="120" />
           <el-table-column label="属性值名称">
-            <template #default="{ row, column, $index }">
+            <template #default="{ row }">
               <el-tag
                 style="margin: 5px"
                 v-for="item in row.attrValueList"
@@ -90,12 +91,13 @@
             </template>
           </el-table-column>
           <el-table-column label="操作" width="130">
-            <template #="{ row, column, $index }">
+            <template #="{ row }">
               <!-- 修改品牌 -->
               <el-button
                 type="warning"
                 icon="Edit"
                 @click="updateAtrr(row)"
+                v-has="`btn.Attr.update`"
               ></el-button>
 
               <el-popconfirm
@@ -104,7 +106,11 @@
                 @confirm="deleteAttr(row.id)"
               >
                 <template #reference>
-                  <el-button type="danger" icon="Delete"></el-button>
+                  <el-button
+                    type="danger"
+                    icon="Delete"
+                    v-has="`btn.Attr.remove`"
+                  ></el-button>
                 </template>
               </el-popconfirm>
             </template>
@@ -116,6 +122,7 @@
 </template>
 
 <script setup lang="ts">
+import { ElMessage } from "element-plus";
 import {
   attrResponseData,
   attrData,
@@ -128,7 +135,6 @@ import {
 } from "@/api/product/atrr";
 import useCategory from "@/store/category";
 import { watch, ref, reactive, nextTick, onBeforeUnmount } from "vue";
-import { ElMessage } from "element-plus";
 
 // 三级分类仓库
 const categoryStore = useCategory();

@@ -1,5 +1,6 @@
 import { createRouter, createWebHashHistory } from "vue-router";
 
+// 常量路由
 export const routes = [
   // layout(骨架)（一级路由）+ 首页（二级路由）
   {
@@ -36,6 +37,30 @@ export const routes = [
       icon: "Platform",
     },
   },
+  // 登录（一级路由）
+  {
+    path: "/login",
+    component: () => import("@/views/login/index.vue"),
+    name: "Login",
+    meta: {
+      title: "登录",
+      hidden: true,
+    },
+  },
+  // 404（一级路由）
+  {
+    path: "/404",
+    component: () => import("@/views/404/index.vue"),
+    name: "404",
+    meta: {
+      title: "404",
+      hidden: true,
+    },
+  },
+];
+
+// 异步路由 (请求判断)
+export const asyncRoutes = [
   // layout(骨架)（一级路由） + 权限管理（二级路由）
   {
     path: "/acl",
@@ -134,38 +159,19 @@ export const routes = [
       },
     ],
   },
-  // 登录（一级路由）
-  {
-    path: "/login",
-    component: () => import("@/views/login/index.vue"),
-    name: "Login",
-    meta: {
-      title: "登录",
-      hidden: true,
-    },
-  },
-  // 404（一级路由）
-  {
-    path: "/404",
-    component: () => import("@/views/404/index.vue"),
-    name: "404",
-    meta: {
-      title: "404",
-      hidden: true,
-    },
-  },
-  // 其他（一级路由）
-  {
-    // 如果域名后面什么都不写或者没有和已经定义好的路由匹配的话
-    path: "/:pathMatch(.*)*",
-    redirect: "/404",
-    name: "Any",
-    meta: {
-      title: "其他",
-      hidden: true,
-    },
-  },
 ];
+
+// 任意路由
+export const anyRoute = {
+  // 如果域名后面什么都不写或者没有和已经定义好的路由匹配的话
+  path: "/:pathMatch(.*)*",
+  redirect: "/404",
+  name: "Any",
+  meta: {
+    title: "其他",
+    hidden: true,
+  },
+};
 
 const router = createRouter({
   history: createWebHashHistory(),
